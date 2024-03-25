@@ -10,7 +10,7 @@ import path from 'path';
 dotenv.config();
 
 mongoose
-  .connect('mongodb://localhost:27017/database_oca')
+ .connect('mongodb+srv://paulgaryoca:Paulgary1412@mern-estate.gs6hsyz.mongodb.net/mern-estate?retryWrites=true&w=majority&appName=mern-estate')
   .then(() => {
     console.log('Connected to MongoDB!');
   })
