@@ -15,6 +15,7 @@ import {
   FaShare,
 } from 'react-icons/fa';
 import Contact from '../components/Contact';
+import Data from '../components/Data';
 
 // https://sabe.io/blog/javascript-format-numbers-commas#:~:text=The%20best%20way%20to%20format,format%20the%20number%20with%20commas.
 
@@ -25,6 +26,7 @@ export default function Listing() {
   const [error, setError] = useState(false);
   const [copied, setCopied] = useState(false);
   const [contact, setContact] = useState(false);
+  const [data, setData] = useState(false);
   const params = useParams();
   const { currentUser } = useSelector((state) => state.user);
 
@@ -71,7 +73,7 @@ export default function Listing() {
               </SwiperSlide>
             ))}
           </Swiper>
-          <div className='fixed top-[13%] right-[3%] z-10 border rounded-full w-12 h-12 flex justify-center items-center bg-slate-100 cursor-pointer'>
+          <div className='absolute top-[13%] right-[3%] z-10 border rounded-full w-12 h-12 flex justify-center items-center bg-slate-100 cursor-pointer'>
             <FaShare
               className='text-slate-500'
               onClick={() => {
@@ -103,6 +105,7 @@ export default function Listing() {
             <div className='flex gap-4'>
               <p className='bg-red-900 w-full max-w-[200px] text-white text-center p-1 rounded-md'>
                 {listing.type === 'rent' ? 'For Rent' : 'For Sale'}
+                
               </p>
               {listing.offer && (
                 <p className='bg-green-900 w-full max-w-[200px] text-white text-center p-1 rounded-md'>
@@ -143,8 +146,21 @@ export default function Listing() {
               >
                 Contact landlord
               </button>
+              
             )}
             {contact && <Contact listing={listing} />}
+            {!data && currentUser && listing.userRef === currentUser._id && !contact && (
+  <button
+    onClick={() => setData(true)}
+    className='bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 p-3'
+  >
+    Show Stats
+  </button>
+)}
+{data && <Data listing={listing} />}
+
+
+            
           </div>
         </div>
       )}
