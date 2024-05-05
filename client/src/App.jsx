@@ -4,6 +4,8 @@ import Signin from "./pages/Signin";
 import SignUp from "./pages/SignUp";
 import About from "./pages/About";
 import Profile from "./pages/Profile";
+import Rent from "./pages/RentListings";
+import Sale from "./pages/SaleListings";
 import Header from "./components/header";
 import PrivateRoute from './components/PrivateRoute';
 import CreateListing from './pages/CreateListing';
@@ -17,6 +19,8 @@ export default function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/rent' element={<Rent />} />
+        <Route path='/sale' element={<Sale />} />
         <Route path='/sign-in' element={<Signin />} />
         <Route path='/sign-up' element={<SignUp />} />
         <Route path='/about' element={<About />} />
