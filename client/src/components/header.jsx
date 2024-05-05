@@ -52,11 +52,24 @@ export default function header() {
               Home
             </li>
           </Link>
+
+         <Link to='/rent'>
+          <li className='hidden sm:inline text-slate-700 hover:underline'>
+             Rent
+            </li>
+            </Link>
+            
+         <Link to='/sale'>
+            <li className='hidden sm:inline text-slate-700 hover:underline'>
+             Sale
+            </li>
+            </Link>
           <Link to='/about'>
             <li className='hidden sm:inline text-slate-700 hover:underline'>
               About
             </li>
           </Link>
+          
           <Link to='/profile'>
             {currentUser ? (
               <img
