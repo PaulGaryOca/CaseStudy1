@@ -5,3 +5,51 @@
 body{
     background-color: rgb(241,245,241);
 }
+.progress-circle {
+    --d: 500px;
+    --color: #404040;
+    --progress: 40;
+    border-radius: var(--d);
+    height: var(--d);
+    width: var(--d);
+    background: conic-gradient( var(--color) calc(calc(var(--progress) / 100) * 360deg), transparent calc(calc(var(--progress) / 100) * 360deg));
+  }
+  .piechart {
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background-image: conic-gradient(
+        #334155 
+        #64748B 
+    );
+    position: relative;
+}
+
+.piechart::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100% - 2px); /* Adjust the width to create the space */
+    height: calc(100% - 2px); /* Adjust the height to create the space */
+    border: 1px solid transparent; /* Set the color of the space */
+    border-radius: 50%;
+}
+
+.piechart::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px; /* Adjust the width of the inner circle */
+    height: 300px; /* Adjust the height of the inner circle */
+    background-color: transparent; /* Color of the inner circle */
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1; /* Ensure the inner circle is above the pie chart */
+}
+
+.piechart::after,
+.piechart::before {
+    box-sizing: border-box; /* Ensure borders are included in width/height */
+}
